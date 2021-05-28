@@ -2,9 +2,6 @@
 
 This is an example integration of the DataMechanics platform in JupyterHub.
 
-WARNING: this is for educational purposes only. The JupyterHub installation
-will give unauthenticated access to your cluster.
-
 If you have an existing JupyterHub setup and wish to add Data Mechanics support to it,
 please check out the YAML configuration files and cherry-pick the configurations
 that makes sense in your case.
@@ -21,7 +18,7 @@ Users will be asked to provide a Data Mechanics API key everytime they launch a 
 
 This setup is useful if your JupyterHub instance is dedicated to Data Mechanics.
 
-Please check out `config-singleuser.yaml`.
+Please check out [`config-singleuser.yaml`](config-singleuser.yaml).
 
 ![singleuser](resources/singleuser.png)
 
@@ -32,7 +29,7 @@ The list can be configured from the JupyterHub configuration. The user will be a
 
 This setup is useful if you already have a JupyterHub instance and want to add Data Mechanics support to it while preserving the ability to run pure Python notebooks.
 
-Please check out `config-profiles.yaml`.
+Please check out [`config-profiles.yaml`](config-profiles.yaml).
 
 ![profiles](resources/profiles.png)
 
@@ -41,19 +38,21 @@ Please check out `config-profiles.yaml`.
 - [helm](https://helm.sh/)
 - A working Kubernetes cluster
 
-## Generate an API key
-
-Navigate to your DataMechanics control plane, and generate an API key.
-
 ## Install JupyterHub on your cluster
 
 ```shell
-$ make install-singluser
+$ make install-singleuser
 ```
 or
 ```shell
 $ make install-profiles
 ```
+
+WARNING: running these commands as is will spin up a JupyterHub instance without authentication. Please refer to [this page of the JupyterHub documentation](https://zero-to-jupyterhub.readthedocs.io/en/latest/administrator/authentication.html) to add an authentication mechanism.
+
+## Generate an API key
+
+Navigate to your Data Mechanics cluster, and generate an API key.
 
 ## Try your JupyterHub installation
 
@@ -67,7 +66,6 @@ proxy-api      ClusterIP      172.20.29.114    <none>          8001/TCP       7h
 proxy-public   LoadBalancer   172.20.234.80    <THE_PUBLIC_IP> 80:31789/TCP   7h46m
 ```
 
-Navigate to https://\<THE_PUBLIC_IP\>/, put the address of your DataMechanics
-control plane (suffixed with `/notebooks`), and the API key you generated.
+Navigate to https://\<THE_PUBLIC_IP\>/ and input the API key you generated.
 
-Start a notebook and check its status in your DataMechanics control plane.
+Start a notebook and check its status in your Data Mechanics cluster.
