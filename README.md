@@ -31,6 +31,10 @@ This setup is useful if you already have a JupyterHub instance and want to add D
 
 Please check out [`config-profiles.yaml`](config-profiles.yaml).
 
+[`config-profiles.yaml`](config-profiles.yaml) targets version 0.11.1 of the Jupyter Hub Helm chart.
+For older versions, it is possible that the configuration needs to be different.
+[`config-profiles-0.9.1.yaml`](config-profiles-0.9.1.yaml) is a working example for version 0.9.1.
+
 ![profiles](resources/profiles.png)
 
 ## Install prerequesites
