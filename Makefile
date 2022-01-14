@@ -20,5 +20,5 @@ install-profiles: .helm-init-done
 		--install jupyterhub jupyterhub/jupyterhub \
 		--namespace jupyterhub \
 		--create-namespace \
-		--version 0.11.1 \
+		--version 1.2.0 \
 		--values config-profiles.yaml

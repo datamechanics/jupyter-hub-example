@@ -44,11 +44,10 @@ hub:
             )
 
             async def options_from_form(self, form_data):
-                options = form_data
+                options = super().options_from_form(form_data)
                 if "profile" in options:
                     self.log.info("A profile was selected")
-                    profile_slug = options["profile"][0]
-                    options["profile"] = profile_slug
+                    profile_slug = options["profile"]
                     profile_dict = None
                     for profile in self.profile_list:
                         if profile["slug"] == profile_slug:
